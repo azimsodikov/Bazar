@@ -20,7 +20,7 @@ Bazar is e-commerce platform for small leather production manufacturer to sell i
 
 ## Product Details Pagee Screenshot
 
-![Caption for the picture.](wwwroot/images/github/details.png)
+![Caption for the picture.](Bazar/wwwroot/images/github/details.png)
 
 
 ## Built With
