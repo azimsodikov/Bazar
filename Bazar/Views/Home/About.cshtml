@@ -1,0 +1,11 @@
+﻿@model Bazar.Models.ViewModels.OrderDetailsViewModel
+
+@{
+    ViewData["Title"] = "About";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+<h3>@Html.DisplayFor(p => p.OrderCount)</h3>
+<a asp-controller="Orders" asp-action="OrderDetails">Count</a>
+
+<p>Use this area to provide additional information.</p>

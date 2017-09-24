@@ -1,0 +1,13 @@
+<svg width="1140" height="170" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="172" width="1142" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path stroke="null" id="svg_1" d="m-0.49713,-1.520549l1140,0l0,171.729409l-1140,0l0,-171.729409z" fill="#01191a"/>
+  <text font-weight="bold" stroke="null" transform="matrix(1.1939877716893117,0,0,1.319335748211233,19.31302638789343,-66.48624419307193) " xml:space="preserve" text-anchor="start" font-family="'Trebuchet MS', Gadget, sans-serif" font-size="35" id="svg_7" y="125.04534" x="263.169832" stroke-opacity="null" stroke-width="0" fill="#ffffff">SALE 40% + FREE DELIVERY</text>
+  <text stroke="null" transform="matrix(1.186495133636889,0,0,0.8181301188961783,-84.74723799365346,58.8514639884971) " xml:space="preserve" text-anchor="start" font-family="'Trebuchet MS', Gadget, sans-serif" font-size="70" id="svg_8" y="32.43656" x="460.599538" stroke-opacity="null" stroke-width="0" fill="#000000"/>
+ </g>
+</svg>

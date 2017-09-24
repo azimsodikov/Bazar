@@ -1,0 +1,27 @@
+@model Bazar.Models.ViewModels.AllProductsByTypeViewModel
+
+
+<div class="container  products-index">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3>All @Model.ProductType.CategoryName</h3>
+            <h5 class="text-muted">All products for this category</h5>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model.Products)
+        {
+
+            <a asp-controller="Products" asp-action="Details" asp-route-id="@item.ProductID">
+                <div class="column col-md-3 col-sm-4">
+                    <img class="stock-img" src="@item.Image" width="250" height="320">
+                    <div class="snippet-title col-md-12">
+                        <h6>@item.Name</h6>
+                        <h6>@item.Price.ToString("C")</h6>
+                    </div>
+                </div>
+            </a>
+
+        }
+    </div>
+</div>

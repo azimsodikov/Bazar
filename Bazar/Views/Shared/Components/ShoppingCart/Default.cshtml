@@ -1,0 +1,51 @@
+@model Bazar.Models.ViewModels.OrderDetailsViewModel
+    <!-- Trigger the modal with a button -->
+<a href="#" id="nav-shopping-cart">
+    <span class="glyphicon glyphicon-shopping-cart">
+    (@(Model.OrderCount > 0 ? @Model.OrderCount : 0))
+    </span>
+</a>
+
+<article class="cart--floating">
+    <div class="container">
+        <h5><strong>Bag(@Model.OrderCount)</strong></h5>
+        @foreach (var item in Model.ProdCount)
+        {
+            <div class="row">
+                <div class="col col-md-1 col-sm-4" nrf="001">
+                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Key.ProductID"><img src="@item.Key.Image" class="img_bag" /> </a>
+                </div>
+                <div class="col col-md-1 col-sm-4">
+                    <h6><strong><a asp-controller="Products" asp-action="Details" asp-route-id="@item.Key.ProductID">@item.Key.Name</a></strong></h6>
+                    <h6>(@item.Value)</h6>
+                </div>
+                <div class="col col-md-1 col-sm-4">
+                    <h6><strong>@string.Format("{0:C}", item.Key.Price)</strong></h6><br /><br />
+                    <form asp-controller="Orders"  asp-action="ShoppCartDelete"  method="post" >
+                        <label for="mySubmit" class="btn"><i class="glyphicon glyphicon-trash"></i></label>
+                        <input asp-controller="Orders" id="mySubmit"  asp-action="ShoppCartDelete" type="submit"/>
+                        <input type="hidden" name="returnUrl" value="@Context.Request.Host@Context.Request.Path" />
+                        <input type="hidden" name="id" value="@item.Key.ProductID"/>
+                    </form>
+                </div>
+            </div>
+            <hr class="hr"/>
+        }
+        <div class="row">
+            <div class="col col-md-2 col-sm-4" nrf="001">
+                <h5><strong class="box_total_text span8">Total:</strong></h5>
+            </div>
+            <div class="col col-md-offset-2">
+                <h6><strong><span>USD </span>@string.Format("{0:C}", Model.OrderTotal)</strong></h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-3 col-sm-4">
+                @if(Model.OrderTotal != 0)
+                {
+                     <a class="btn btn-default btn-lg btn-block add-bag" asp-action="OrderDetails" asp-controller="Orders">CHECKOUT</a>
+                }
+            </div>
+        </div>
+     </div>
+</article>

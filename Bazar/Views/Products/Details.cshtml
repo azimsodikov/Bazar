@@ -1,0 +1,25 @@
+@model Bazar.Models.Products
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2 class="product-name">@Html.DisplayFor(model => model.Name)</h2>
+
+<div class="container">
+    <div class="row pull-left">
+        <div class="col-md-6">
+            <img src="@Html.DisplayFor(model => model.Image)" width="350" height="480" />
+        </div>
+    </div>
+    <div class="row align-middle">
+        <div class="col-md-6 col-sm-4 pull-right details-add">
+            <h3 class="text-center">@Html.DisplayFor(model => model.Price)</h3>
+            <h5 class="text-center">@Html.DisplayFor(model => model.Description)</h5>
+            <form asp-controller="Orders" id="formValue" class="form-inline" asp-action="BuyProduct" asp-route-id="@Model.ProductID" method="post">                
+                <button class="btn btn-outline-primary btn-lg btn-block add_bag" id="nav-shopping-cart" type="submit">Add to bag</button>
+            </form>
+        </div>
+    </div>
+</div>
+

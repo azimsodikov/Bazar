@@ -1,0 +1,136 @@
+@model Bazar.Models.ViewModels.ConfirmViewModel
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h4><strong>YOUR SHOPPING BASKET</strong></h4>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                       <h5><strong>Itme</strong></h5>
+                    </th>
+                    <th>
+                        <h5><strong>Description</strong></h5>
+                    </th>
+                    <th>
+                        <h5><strong>Quantity</strong></h5>
+                    </th>
+                    <th>
+                        <h5><strong>Price</strong></h5>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ProdCount)
+                {
+                    <tr>
+                        <td>
+                            <img src="@item.Key.Image" class="img_bag" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Key.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Value)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Key.Price)
+                        </td>                        
+                    </tr>
+                }
+            </tbody>
+            <tbody>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col col-md-3">
+                <h5><strong class="box_total_text span8">SUBTOTAL</strong></h5>
+            </div>
+            <div class="col col-md-offset-10">
+                <h6><strong><span>USD </span>@string.Format("{0:C}", Model.OrderTotal)</strong></h6>
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <hr />
+            <h6><strong>CHOOSE A DELIVERY ADDRESS</strong></h6>
+            <hr />
+        </div>
+        <form  method="post" asp-action="CompleteOrder" asp-controller="Orders">
+            <div class="row">
+                @foreach (var item in Model.Addresses)
+                {
+                    <div class="col col-md-6">
+                        <h6><strong>SELECT</strong></h6>
+                        <div class="radio">
+                            <label><input asp-for="Addresses" id="addID" checked=""  value="@item.AddressID" type="radio" name="addID"></label>
+                        </div>
+                    </div>
+                    <div class="col col-md-4">
+                        <h6><strong>SHIPPING ADDRESS</strong></h6>
+                        <p>@item.Street</p>
+                        <p>@item.City</p>
+                        <p>@item.State</p>
+                        <p>@item.Zip</p><br />
+                    </div>
+                    <div class="col col-md-2">
+                        <a asp-controller="Manage" asp-action="Index" class="btn btn-default">Edit</a>
+                    </div>
+                    <hr />
+
+                }
+            </div>
+            <div class="col-md-12 text-center">
+            <hr />
+                <h6><strong>PAYMENT METHODS</strong></h6>
+            <hr />
+            </div>
+            <div class="row">
+                @foreach (var item in Model.PayMethods)
+                {
+                <div class="col col-md-3">
+                    <h6><strong>SELECT</strong></h6>
+                    <div class="radio">
+                        <label><input asp-for="PayMethods" id="payID" checked="" value="@item.PaymentTypesID" type="radio" name="payID"></label>
+                    </div>
+                </div>
+                <div class="col col-md-3">
+                    <h6><strong>PAYMENT TYPES</strong></h6>
+                    <p>@item.Type</p>
+                    <p>@item.AccountNumber</p>
+                </div>
+                }
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col col-md-3 col-md-offset-6">
+                    <h6><strong>SUBTOTAL(@Model.OrderCount) Items</strong></h6>
+                    <h6 class="text-muted"><strong>Dispatch Home delivery</strong></h6>
+                    <h6 class="text-muted"><strong>Estimated Tax</strong></h6>
+                    <br />
+                    <h5 class="bg-faded"><strong>Total amount</strong></h5>
+                </div>
+                <div class="col col-md-3">
+                    <h5><strong>@string.Format("{0:C}", Model.OrderTotal)</strong></h5>
+                    <h5><strong>Free</strong></h5>
+                    <h5><strong>@string.Format("{0:C}", 0)</strong></h5>
+                    <br />
+                    <h5 class="bg-faded"><strong>@string.Format("{0:C}", Model.OrderTotal)</strong></h5>
+                    <br />
+                </div>
+            </div>
+            <button  class="btn btn-default btn-lg btn-block" type="submit">CONFIRM PAYMENT</button>
+        </form>
+
+
+    </div>
+</div>
+
