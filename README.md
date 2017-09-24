@@ -23,6 +23,11 @@ Bazar is e-commerce platform for small leather production manufacturer to sell i
 ![Caption for the picture.](Bazar/wwwroot/images/github/details.png)
 
 
+## Shopping Cart Pagee Screenshot
+
+![Caption for the picture.](Bazar/wwwroot/images/github/bag.png)
+
+
 ## Built With
 
 The Bazar web application was built using: 
